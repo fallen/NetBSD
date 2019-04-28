@@ -776,7 +776,7 @@ case "${targ}" in
     targ_defvec=iq2000_elf32_vec
     ;;
 
-  lm32-*-elf | lm32-*-rtems*)
+  lm32-*-elf | lm32-*-rtems* | lm32-*-netbsd*)
     targ_defvec=lm32_elf32_vec
     targ_selvecs=lm32_elf32_fdpic_vec
     ;;

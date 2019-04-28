@@ -1,0 +1,8 @@
+# $NetBSD: $
+#
+# standard, required NetBSD/milkymist 'options'
+
+machine milkymist lm32
+include		"conf/std"			# MI standard options
+include		"arch/lm32/conf/std.lm32"	# lm32 standard options
+

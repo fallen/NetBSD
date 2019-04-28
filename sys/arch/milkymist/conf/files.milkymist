@@ -1,0 +1,38 @@
+# $NetBSD: $
+#
+
+maxpartitions 16
+
+maxusers 2 8 64
+
+device	mainbus {}
+attach	mainbus at root
+file	arch/milkymist/milkymist/mainbus.c
+
+device	cpu
+attach	cpu at mainbus
+
+# timers
+device	timer
+attach	timer at mainbus
+file	arch/milkymist/dev/timer.c
+
+# serial port
+device	milkymist_com: tty
+attach	milkymist_com at mainbus
+file	arch/milkymist/dev/uart.c		milkymist_com needs-flag
+
+# clock
+device clock
+attach clock at mainbus
+file arch/milkymist/milkymist/clock.c
+
+file	arch/milkymist/milkymist/intr.c
+file	arch/milkymist/milkymist/machdep.c
+file 	arch/milkymist/milkymist/sys_machdep.c
+file	arch/milkymist/milkymist/autoconf.c
+
+# Memory Disk for install floppy
+file	dev/md_root.c			memory_disk_hooks & md
+
+include "arch/milkymist/conf/majors.milkymist"
